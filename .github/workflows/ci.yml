@@ -13,9 +13,6 @@ env:
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
-  # ============================================================
-  # Stage 1 - Lint YAML and Dockerfile
-  # ============================================================
   lint:
     name: Lint YAML and Dockerfile
     runs-on: ubuntu-latest
@@ -42,9 +39,6 @@ jobs:
           failure-threshold: error
         continue-on-error: true
 
-  # ============================================================
-  # Stage 2 - Build Docker image
-  # ============================================================
   build:
     name: Build Docker image
     runs-on: ubuntu-latest
@@ -66,9 +60,6 @@ jobs:
           path: image.tar
           retention-days: 1
 
-  # ============================================================
-  # Stage 3 - Trivy filesystem scan (dependencies)
-  # ============================================================
   trivy-fs-scan:
     name: Trivy FS scan (dependencies)
     runs-on: ubuntu-latest
@@ -78,7 +69,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Trivy filesystem scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.24.0
         with:
           scan-type: fs
           scan-ref: .
@@ -88,7 +79,7 @@ jobs:
           ignore-unfixed: false
 
       - name: Trivy FS scan - save report
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.24.0
         with:
           scan-type: fs
           scan-ref: .
@@ -104,9 +95,6 @@ jobs:
           path: trivy-fs-report.txt
           retention-days: 7
 
-  # ============================================================
-  # Stage 4 - Trivy Docker image scan
-  # ============================================================
   trivy-image-scan:
     name: Trivy image scan
     runs-on: ubuntu-latest
@@ -121,7 +109,7 @@ jobs:
         run: docker load -i image.tar
 
       - name: Trivy image scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.24.0
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           severity: CRITICAL,HIGH
@@ -129,7 +117,7 @@ jobs:
           exit-code: "0"
 
       - name: Trivy image scan - save report
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.24.0
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           severity: CRITICAL,HIGH,MEDIUM
@@ -144,9 +132,6 @@ jobs:
           path: trivy-image-report.txt
           retention-days: 7
 
-  # ============================================================
-  # Stage 5 - Conftest policy check (Kubernetes)
-  # ============================================================
   conftest:
     name: Conftest policy check
     runs-on: ubuntu-latest
