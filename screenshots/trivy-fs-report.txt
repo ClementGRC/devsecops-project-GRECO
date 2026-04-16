@@ -1,0 +1,87 @@
+2026-04-16T18:24:29Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-04-16T18:24:29Z	WARN	[pip] Unable to find python `site-packages` directory. License detection is skipped.	err="site-packages directory not found"
+2026-04-16T18:24:29Z	INFO	Number of language-specific files	num=1
+2026-04-16T18:24:29Z	INFO	[pip] Detecting vulnerabilities...
+
+Report Summary
+
+┌──────────────────┬──────┬─────────────────┐
+│      Target      │ Type │ Vulnerabilities │
+├──────────────────┼──────┼─────────────────┤
+│ requirements.txt │ pip  │       16        │
+└──────────────────┴──────┴─────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+requirements.txt (pip)
+======================
+Total: 16 (MEDIUM: 13, HIGH: 3, CRITICAL: 0)
+
+┌──────────┬────────────────┬──────────┬────────┬───────────────────┬────────────────┬──────────────────────────────────────────────────────────────┐
+│ Library  │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version  │                            Title                             │
+├──────────┼────────────────┼──────────┼────────┼───────────────────┼────────────────┼──────────────────────────────────────────────────────────────┤
+│ Jinja2   │ CVE-2024-56201 │ MEDIUM   │ fixed  │ 3.1.4             │ 3.1.5          │ jinja2: Jinja has a sandbox breakout through malicious       │
+│          │                │          │        │                   │                │ filenames                                                    │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-56201                   │
+│          ├────────────────┤          │        │                   │                ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-56326 │          │        │                   │                │ jinja2: Jinja has a sandbox breakout through indirect        │
+│          │                │          │        │                   │                │ reference to format method...                                │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-56326                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-27516 │          │        │                   │ 3.1.6          │ jinja2: Jinja sandbox breakout through attr filter selecting │
+│          │                │          │        │                   │                │ format method                                                │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2025-27516                   │
+├──────────┼────────────────┤          │        ├───────────────────┼────────────────┼──────────────────────────────────────────────────────────────┤
+│ Werkzeug │ CVE-2024-49766 │          │        │ 3.0.4             │ 3.0.6          │ werkzeug: python-werkzeug: Werkzeug safe_join not safe on    │
+│          │                │          │        │                   │                │ Windows                                                      │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-49766                   │
+│          ├────────────────┤          │        │                   │                ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-49767 │          │        │                   │                │ werkzeug: python-werkzeug: Werkzeug possible resource        │
+│          │                │          │        │                   │                │ exhaustion when parsing file data in forms...                │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-49767                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-66221 │          │        │                   │ 3.1.4          │ Werkzeug: Werkzeug: Denial of service via Windows device     │
+│          │                │          │        │                   │                │ names in path segments...                                    │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2025-66221                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-21860 │          │        │                   │ 3.1.5          │ Werkzeug safe_join() allows Windows special device names     │
+│          │                │          │        │                   │                │ with compound extensions                                     │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2026-21860                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-27199 │          │        │                   │ 3.1.6          │ Werkzeug safe_join() allows Windows special device names     │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2026-27199                   │
+├──────────┼────────────────┤          │        ├───────────────────┼────────────────┼──────────────────────────────────────────────────────────────┤
+│ requests │ CVE-2024-35195 │          │        │ 2.31.0            │ 2.32.0         │ requests: subsequent requests to the same host ignore cert   │
+│          │                │          │        │                   │                │ verification                                                 │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-35195                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-47081 │          │        │                   │ 2.32.4         │ requests: Requests vulnerable to .netrc credentials leak via │
+│          │                │          │        │                   │                │ malicious URLs                                               │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-47081                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-25645 │          │        │                   │ 2.33.0         │ requests: Requests: Security bypass due to predictable       │
+│          │                │          │        │                   │                │ temporary file creation                                      │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2026-25645                   │
+├──────────┼────────────────┼──────────┤        ├───────────────────┼────────────────┼──────────────────────────────────────────────────────────────┤
+│ urllib3  │ CVE-2025-66418 │ HIGH     │        │ 2.0.7             │ 2.6.0          │ urllib3: urllib3: Unbounded decompression chain leads to     │
+│          │                │          │        │                   │                │ resource exhaustion                                          │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2025-66418                   │
+│          ├────────────────┤          │        │                   │                ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-66471 │          │        │                   │                │ urllib3: urllib3 Streaming API improperly handles highly     │
+│          │                │          │        │                   │                │ compressed data                                              │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2025-66471                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-21441 │          │        │                   │ 2.6.3          │ urllib3: urllib3 vulnerable to decompression-bomb safeguard  │
+│          │                │          │        │                   │                │ bypass when following HTTP redirects (streaming...           │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2026-21441                   │
+│          ├────────────────┼──────────┤        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-37891 │ MEDIUM   │        │                   │ 1.26.19, 2.2.2 │ urllib3: proxy-authorization request header is not stripped  │
+│          │                │          │        │                   │                │ during cross-origin redirects                                │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2024-37891                   │
+│          ├────────────────┤          │        │                   ├────────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-50181 │          │        │                   │ 2.5.0          │ urllib3: urllib3 redirects are not disabled when retries are │
+│          │                │          │        │                   │                │ disabled on PoolManager...                                   │
+│          │                │          │        │                   │                │ https://avd.aquasec.com/nvd/cve-2025-50181                   │
+└──────────┴────────────────┴──────────┴────────┴───────────────────┴────────────────┴──────────────────────────────────────────────────────────────┘
